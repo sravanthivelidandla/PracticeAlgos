@@ -7,6 +7,7 @@ using PracticeAlgos.Day6;
 using PracticeAlgos.Day7;
 using PracticeAlgos.Day8;
 using PracticeAlgos.FacebookInterviewQuestions;
+using PracticeAlgos.Tries;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,9 +19,13 @@ namespace PracticeAlgos
     {
         static void Main(string[] args)
         {
+            Tries();
+
+            //Nextflix educative.io
+            //NIQs();
 
             //Facebook
-            FIQs();
+           // FIQs();
             //Day31(); //Trees
             //Day8();
 
@@ -115,6 +120,123 @@ namespace PracticeAlgos
             //    Console.WriteLine("InValid Paranthesis");
             #endregion
             Console.ReadKey();
+        }
+
+        private static void Tries()
+        {
+            string[] keys = { "a", "there", "the","their","by","bye","answer", "hi", "hello", "ans", "why","where","what" };
+
+            Trie trie = new Trie();
+            for(int i =0; i< keys.Length; i++)
+            {
+                trie.insertNode(keys[i]);
+            }
+
+            Console.WriteLine("answer is present in the trie: {0}", trie.searchNode("Answer"));
+            Console.WriteLine("byefornow is present in the trie: {0}", trie.searchNode("Byefornow"));
+
+            trie.insertNode("quick");
+            trie.deleteNode("quick");
+            Console.WriteLine("quick is present in the trie: {0}", trie.searchNode("quick"));
+
+            //find the totalnumber of words in the trie
+            Console.WriteLine("total number of words in the trie : {0}", totalWords(trie.root));
+
+            Console.WriteLine("list of words in the trie : {0}", findWordsInTrie(trie.root).Count);
+
+
+        }
+
+        private static List<string> findWordsInTrie(TrieNode root)
+        {
+            List<string> result = new List<string>();
+            string word = "";
+            getWords(root, result, 0, ref word);
+            return result;
+        }
+
+        private static void getWords(TrieNode root, List<string> result, int level, ref string word)
+        {
+            if (root.isEndWord)
+            {
+                string temp = "";
+                for(int x =0; x< level; x++)
+                {
+                    temp += word[x];
+                }
+                result.Add(temp);
+            }
+            else
+            {
+                for(int i =0; i< 26; i++)
+                {
+                    if(root.children[i] != null)
+                    {
+                        if(level < word.Length)
+                        {
+                            StringBuilder sb = new StringBuilder(word);
+                            sb[level] = (char)(i + 'a');
+                            word = sb.ToString();
+                        }
+                        else
+                        {
+                            word += (char)(i + 'a');
+                        }
+                        getWords(root.children[i], result, level + 1, ref word);
+                    }
+                }
+            }
+        }
+
+        private static int totalWords(TrieNode root)
+        {
+            int result = 0;
+
+            if (root.isEndWord)
+                result++;
+
+            for(int i =0; i < 26; i++)
+            {
+                if (root.children[i] != null)
+                    result += totalWords(root.children[i]);
+            }
+            return result;
+        }
+        private static void NIQs()
+        {
+            NetflixIQ.MaxStack stack = new NetflixIQ.MaxStack();
+            stack.push(5);
+            stack.push(0);
+            stack.push(2);
+            stack.push(4);
+            stack.push(6);
+            stack.push(3);
+            stack.push(10);
+
+            Console.WriteLine("Inserted max ratings!");
+            Console.WriteLine(stack.getMaxRating());
+
+            stack.pop();
+            Console.WriteLine("New rating after pressing back button: {0}", stack.getMaxRating());
+
+            int[] pushOp = { 1, 2, 3, 4, 5 };
+            int[] popOp = { 5, 4, 3, 2, 1 };
+
+            NetflixIQ.NIQ niq = new NetflixIQ.NIQ();
+            if (niq.isValidOperations(pushOp, popOp))
+                Console.WriteLine("Valid Sessions");
+            else
+                Console.WriteLine("InValid Sessions");
+
+
+            int[] pushOp2 = { 6, 7, 8, 9, 10 };
+            int[] popOp2 = { 8, 10, 7, 9 };
+
+            if (niq.isValidOperations(pushOp2, popOp2))
+                Console.WriteLine("Session Successfull!");
+            else
+                Console.WriteLine("Session Faulty!");
+
         }
 
         private static void FIQs()

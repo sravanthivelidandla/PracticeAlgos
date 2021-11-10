@@ -4,6 +4,10 @@ using System.Text;
 
 namespace PracticeAlgos.FacebookInterviewQuestions
 {
+    /// <summary>
+    /// Refer to Educative.io for all the questions.
+    /// https://www.educative.io/courses/decode-the-coding-interview-csharp/m7GQxGmLvpR
+    /// </summary>
     public class FIQ
     {
         public List<List<string>> groupSimilarMessages(List<string> messages)
