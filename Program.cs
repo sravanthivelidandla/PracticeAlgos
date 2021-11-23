@@ -1,4 +1,5 @@
-﻿using PracticeAlgos.Day12;
+﻿using PracticeAlgos._15daysPractice;
+using PracticeAlgos.Day12;
 using PracticeAlgos.Day2;
 using PracticeAlgos.Day31;
 using PracticeAlgos.Day4;
@@ -7,10 +8,13 @@ using PracticeAlgos.Day6;
 using PracticeAlgos.Day7;
 using PracticeAlgos.Day8;
 using PracticeAlgos.FacebookInterviewQuestions;
+using PracticeAlgos.MicrosoftIQ;
+using PracticeAlgos.PalindromicStrings;
 using PracticeAlgos.Tries;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PracticeAlgos
@@ -19,14 +23,37 @@ namespace PracticeAlgos
     {
         static void Main(string[] args)
         {
-            Tries();
+
+
+            new SubSet().printSubset("abc");
+
+            Console.WriteLine(new RemoveChars().skipAppNotApple("aabbcappdeasdg"));
+
+            Console.WriteLine(new RemoveChars().replaceChars("aabbcdeasdg"));
+           // microsoft();
+
+            Console.WriteLine("{0}", ReverseWords("hi hello i am Sravanthi      "));
+            //Console.WriteLine("{0}", atoi("21474836460"));
+
+           // dpEducative();
+
+            // WordBreak();
+
+
+            //decodeWays();
+
+            //twoSum();
+            //threeSum();
+
+
+            // Tries();
 
             //Nextflix educative.io
             //NIQs();
 
             //Facebook
-           // FIQs();
-            //Day31(); //Trees
+            // FIQs();
+            // Day31(); //Trees
             //Day8();
 
             //Day7();
@@ -122,6 +149,210 @@ namespace PracticeAlgos
             Console.ReadKey();
         }
 
+        private static void microsoft()
+        {
+            //ValidParanthesis vp = new ValidParanthesis();
+            //Console.WriteLine(vp.IsValid("(){}[]"));
+            //Console.WriteLine(vp.IsValid("()}[]"));
+            //Console.WriteLine(vp.IsValid("]]]{{{"));
+
+            MissingNum number = new MissingNum();
+            Console.WriteLine(number.SingleNumber(new int[] { 1, 2, 3, 1, 2 }));
+            Console.WriteLine(number.SingleNumber(new int[] { 1, 2, 4,4,5,5,7, 1, 2 }));
+
+        }
+
+        public static string ReverseWords(string s)
+        {
+            if (string.IsNullOrEmpty(s)) 
+            return null;
+
+            return String.Join(" ", s.Split(' ', StringSplitOptions.RemoveEmptyEntries).Reverse());
+        }
+
+
+            static int atoi(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            s = s.Replace(" ", "").ToLower();
+            char[] chars = s.ToCharArray();
+            int result = 0;
+
+            int sign = 0;
+            bool findDigit = false, findSign = false;
+            foreach (char ch in chars)
+            {
+                if (!findDigit && !findSign && (ch == '+' || ch == '-'))
+                {
+                    findSign = true;
+                    sign = (ch == '+') ? 1 : -1;
+                }
+                else if (ch >= '0' && ch <= '9')
+                {
+                    findDigit = true;
+                    if (result > int.MaxValue / 10 || (result == int.MaxValue / 10 && ch - '0' > 7))
+                        if (sign == -1)
+                            return int.MinValue;
+                        else
+                            return int.MaxValue;
+
+
+                    result = result * 10 + (ch - '0');
+                }
+
+                else if ((findSign || findDigit && ch == ' ') || findDigit && ch == '.' || ch == ' ')
+                {
+                    return result * sign;
+                }
+            }
+            return result * sign;
+        }
+
+        private static void dpEducative()
+        {
+
+            MinimumPalindromeCuts mpp = new MinimumPalindromeCuts();
+            Console.WriteLine(mpp.mpCuts("abdbca"));
+
+            PalindromeDeletion pd = new PalindromeDeletion();
+            Console.WriteLine(pd.minDeletions("dfseabbcbbaeewer"));
+            Console.WriteLine(pd.minDeletions("abcde"));
+
+            //LPSubstring lps = new LPSubstring();
+            //Console.WriteLine(lps.lpSubstring("dfseabbcbbaeewer"));
+            //Console.WriteLine(lps.lpSubstring("abcde"));
+
+            //LPS lps = new LPS();
+            //Console.WriteLine(lps.lps("abbcbbae"));
+            //Console.WriteLine(lps.lps("abcde"));
+
+
+            //HouseRobbery ht = new HouseRobbery();
+            //int[] wealth = { 2, 5, 1, 3, 6, 2, 4 };
+            //Console.WriteLine(ht.stealMaxWealth(wealth));
+            //wealth = new int[] { 2, 10, 14, 8, 1 };
+            //Console.WriteLine(ht.stealMaxWealth(wealth));
+
+            //JumpGameII jump = new JumpGameII();
+            //Console.WriteLine(jump.MinJumpsRequired(new int[] { 1, 2, 3, 4, 5, 6 }));
+            //Console.WriteLine(jump.MinJumpsRequired(new int[] { 2, 1, 0, 1, 4 }));
+
+            //JumpGame
+            //JumpGameI jump = new JumpGameI();
+            //Console.WriteLine(jump.canJump(new int[]{1,2,3,4,5,6}));
+            //Console.WriteLine(jump.canJump(new int[] { 1, 0, 3, 4, 5, 6 }));
+
+            //Stairs
+            //StairsToBeTaken sc = new StairsToBeTaken();
+            //Console.WriteLine(sc.CountWays(3));
+            //Console.WriteLine(sc.CountWays(4));
+            //Console.WriteLine(sc.CountWays(5));
+
+
+            //MaxRibbonCut cr = new MaxRibbonCut();
+            //int[] ribbonLengths = { 2, 3, 5 };
+            //Console.WriteLine(cr.maxRibbonCutSolver(ribbonLengths, 5));
+            //ribbonLengths = new int[] { 2, 3 };
+            //Console.WriteLine(cr.maxRibbonCutSolver(ribbonLengths, 7));
+            //ribbonLengths = new int[] { 3, 5, 7 };
+            //Console.WriteLine(cr.maxRibbonCutSolver(ribbonLengths, 13));
+            //ribbonLengths = new int[] { 3, 5 };
+            //Console.WriteLine(cr.maxRibbonCutSolver(ribbonLengths, 7));
+
+            //CoinChange cc = new CoinChange();
+            //int[] denominations = { 1, 2, 3 };
+            //Console.WriteLine((cc.waysToGetCoinChange(denominations, 5)));
+
+            //RodCutting rc = new RodCutting();
+            //int[] lengths = { 1, 2, 3, 4, 5 };
+            //int[] prices = { 2, 6, 7, 10, 13 };
+            //int maxProfit = rc.rodCutting( prices,lengths, 5);
+            //Console.WriteLine(maxProfit);
+
+            //UnboundedKnapsack ks = new UnboundedKnapsack();
+            //int[] profits = { 15, 50, 60, 90 };
+            //int[] weights = { 1, 3, 4, 5 };
+            //int maxProfit = ks.solveKnapsack(profits, weights, 8);
+            //Console.WriteLine(maxProfit);
+
+
+            //TargetSum ts = new TargetSum();
+            //int[] num = { 1, 1, 2, 3 };
+            //Console.WriteLine(ts.targetSum(num, 1));
+            //num = new int[] { 1, 2, 7, 1 };
+            //Console.WriteLine(ts.targetSum(num, 9));
+
+            // PartitionSet ps = new PartitionSet();
+            //int[] num = { 1, 2, 3, 9 };
+            //Console.WriteLine(ps.canPartition(num));
+            //num = new int[] { 1, 2, 7, 1, 5 };
+            //Console.WriteLine(ps.canPartition(num));
+            //num = new int[] { 1, 3, 100, 4 };
+            //Console.WriteLine(ps.canPartition(num));
+        }
+
+        private static void WordBreak()
+        {
+            Console.Write(new WordBreak().wordBreak("leetcode", new List<string>() { "leet", "code" }));
+        }
+
+        private static void decodeWays()
+        {
+            Console.WriteLine(new DecodeWays().decodeWays("11211"));
+            Console.WriteLine(new DecodeWays().decodeWays("1120"));
+            Console.WriteLine(new DecodeWays().decodeWays("1201"));
+            Console.WriteLine(new DecodeWays().decodeWays("112060"));
+            Console.WriteLine(new DecodeWays().decodeWays("112111121111"));
+
+            Console.WriteLine(new DecodeWays().decodeWaysII("11211"));
+            Console.WriteLine(new DecodeWays().decodeWaysII("1120"));
+            Console.WriteLine(new DecodeWays().decodeWaysII("1201"));
+            Console.WriteLine(new DecodeWays().decodeWaysII("112060"));
+            Console.WriteLine(new DecodeWays().decodeWaysII("112111121111"));
+        }
+        private static void threeSum()
+        {
+           List<List<int>> result = new ThreeSum().threeSum(new int[] { 1, 2, 3, 4, 5, 6 }, 11);
+            foreach (List<int> r in result)
+                foreach(int res in r)
+                Console.Write(res + ",");
+            Console.WriteLine();
+            result = new ThreeSum().threeSum(new int[] { 1, 2, 3, 4, 5, 6 }, 15);
+            foreach (List<int> r in result)
+                foreach (int res in r)
+                    Console.Write(res + ",");
+            Console.WriteLine();
+            result = new ThreeSum().threeSum(new int[] { 1, 2, 3, 4, 5, 6 }, 8);
+            foreach (List<int> r in result)
+                foreach (int res in r)
+                    Console.Write(res + ",");
+            Console.WriteLine();
+            result = new ThreeSum().threeSum(new int[] { 1, 2, 3, 4, 5, 6 }, 10);
+            foreach (List<int> r in result)
+                foreach (int res in r)
+                    Console.Write(res + ",");
+        }
+
+        private static void twoSum()
+        {
+            int[] result = new TwoSum().twoSum(new int[] { 1, 2, 3, 4, 5, 6 }, 11);
+            foreach (int r in result)
+                Console.Write(r + ",");
+            Console.WriteLine();
+            result = new TwoSum().twoSum(new int[] { 1, 2, 3, 4, 5, 6 }, 15);
+            foreach (int r in result)
+                Console.Write(r + ",");
+            Console.WriteLine();
+            result = new TwoSum().twoSum(new int[] { 1, 2, 3, 4, 5, 6 }, 8);
+            foreach (int r in result)
+                Console.Write(r + ",");
+            Console.WriteLine();
+            result = new TwoSum().twoSum(new int[] { 1, 2, 3, 4, 5, 6 }, 10);
+            foreach (int r in result)
+                Console.WriteLine(r + ",");
+        }
+
         private static void Tries()
         {
             string[] keys = { "a", "there", "the","their","by","bye","answer", "hi", "hello", "ans", "why","where","what" };
@@ -159,31 +390,29 @@ namespace PracticeAlgos
         {
             if (root.isEndWord)
             {
+                //current word is stored till the 'level' in the word string
                 string temp = "";
-                for(int x =0; x< level; x++)
+                for (int x = 0; x < level; x++)
                 {
                     temp += word[x];
                 }
                 result.Add(temp);
             }
-            else
+            for (int i = 0; i < 26; i++)
             {
-                for(int i =0; i< 26; i++)
+                if (root.children[i] != null)
                 {
-                    if(root.children[i] != null)
+                    if (level < word.Length)
                     {
-                        if(level < word.Length)
-                        {
-                            StringBuilder sb = new StringBuilder(word);
-                            sb[level] = (char)(i + 'a');
-                            word = sb.ToString();
-                        }
-                        else
-                        {
-                            word += (char)(i + 'a');
-                        }
-                        getWords(root.children[i], result, level + 1, ref word);
+                        StringBuilder sb = new StringBuilder(word);
+                        sb[level] = (char)(i + 'a');
+                        word = sb.ToString();
                     }
+                    else
+                    {
+                        word += (char)(i + 'a');
+                    }
+                    getWords(root.children[i], result, level + 1, ref word);
                 }
             }
         }
@@ -310,6 +539,11 @@ namespace PracticeAlgos
         private static void Day31()
         {
             TreeNode root = ConstructBinaryTree();
+
+            Console.WriteLine(new TreesAlgoExpert().SerializeTree(root));
+            string input = "15,7,2,#,#,12,10,#,#,13,#,#,20,17,#,#,22,#,#,";
+            root = new TreesAlgoExpert().deserializeToTree(input);
+            traverseSubTree(root);
             //Console.WriteLine(new TreesAlgoExpert().findClosestNode(root, 3).data);
             //Console.WriteLine(new TreesAlgoExpert().findClosestNode(root, 11).data);
             //Console.WriteLine(new TreesAlgoExpert().findClosestNode(root, 13).data);
@@ -331,9 +565,9 @@ namespace PracticeAlgos
             //Console.Write("PostOrder traversal : ");
             //new TreesAlgoExpert().postOrderTraversal(root);
 
-            Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 3));
-            Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 9));
-            Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 19));
+            //Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 3));
+            //Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 9));
+            //Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 19));
         }
 
         private static void Day8()

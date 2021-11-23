@@ -9,6 +9,7 @@ namespace PracticeAlgos.Day31
     {
         TreeNode minDiffNode = null;
         int curDiff = 0;
+
         int minDiff = int.MaxValue;
 
         public TreeNode findClosestNode(TreeNode root, int data)
@@ -120,5 +121,64 @@ namespace PracticeAlgos.Day31
             }
             findKthLargestElementRecursive(node.left, k, items);           
         }
+
+        public string SerializeTree(TreeNode node)
+        {
+            if (node == null)
+                return null;
+            else
+                return preOrderDFS(node);
+           
+        }
+
+        private string preOrderDFS(TreeNode node)
+        {
+            string s = "";
+            if (node == null)
+            {
+                s += "#,";               
+            }
+            else
+            {
+                s += node.data.ToString() + ",";
+                s += preOrderDFS(node.left);
+                s += preOrderDFS(node.right);               
+            }
+            return s;
+        }
+
+        Queue<string> queue = new Queue<string>();
+        public TreeNode deserializeToTree(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return null;
+
+            deserializeTreeHelper(s);
+            return stoTree(s);
+        }
+
+        private TreeNode stoTree(string s) {
+            string val = queue.Dequeue();
+            TreeNode node = null;
+            if (val == "#")
+            {
+                return null;
+            }
+           
+                node = new TreeNode(Convert.ToInt32(val));
+                node.left = stoTree(s);
+                node.right = stoTree(s);                
+           
+            return node;
+        }
+
+        private void deserializeTreeHelper(string s)
+        {           
+            foreach(string st in s.Split(','))
+            {
+                queue.Enqueue(st);
+            }
+        }
+
     }
 }
