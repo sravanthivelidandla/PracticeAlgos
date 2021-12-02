@@ -6,7 +6,7 @@ namespace PracticeAlgos.Tries
 {
     public class TrieNode
     {
-        const int ALPHABET_SIZE = 26;
+        const int ALPHABET_SIZE = 128;
         public TrieNode[] children = new TrieNode[ALPHABET_SIZE];
         public bool isEndWord;
 
@@ -53,8 +53,7 @@ namespace PracticeAlgos.Tries
 
                 if(currentNode.children[index] == null)
                 {
-                    currentNode.children[index] = new TrieNode();
-                    Console.WriteLine(" char '{0}' is inserted", key[i]);
+                    currentNode.children[index] = new TrieNode();                    
                 }
                 currentNode = currentNode.children[index];
             }
@@ -133,7 +132,7 @@ namespace PracticeAlgos.Tries
 
         //function to search the key
         public bool searchNode(string key)
-        {
+        { 
             if (string.IsNullOrEmpty(key))
                 return false;
 
@@ -157,10 +156,16 @@ namespace PracticeAlgos.Tries
 
             return false;
         }
+
         //function to get the index of a key;
+        //public int getIndex(char t)
+        //{
+        //    return t - 'a';
+        //}
+
         public int getIndex(char t)
         {
-            return t - 'a';
+            return (int)t;
         }
     }
 }

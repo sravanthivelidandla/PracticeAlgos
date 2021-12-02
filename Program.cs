@@ -1,4 +1,5 @@
 ﻿using PracticeAlgos._15daysPractice;
+using PracticeAlgos.BinarySearch;
 using PracticeAlgos.Day12;
 using PracticeAlgos.Day2;
 using PracticeAlgos.Day31;
@@ -23,24 +24,87 @@ namespace PracticeAlgos
     {
         static void Main(string[] args)
         {
+            new LongestSubstringWORepeatingChars().getLengthOfLongestSubstring();
+
+            new CourseScheduler().canFinishCourses();
+
+            new TimeTakenToInformEmployees().timeTakenToInform();
+            
+            new WallsAndGates().fillDistanceMatrix();
+            //new RottenOranges().calcTimeTakenToRottenOranges();
+//            new NumberOfIslands().getNumberOfIslands();
+            //new SearchWordsInDocument().searchDocument();
+
+            //new NextPermutation().getNextPermutation();
+
+            //new MaxConsecutive1s().maxConsecutive1s();
+
+            //Prateek udemy
+            // new NQueens().solveQueens();
+
+            //new SudokuSolver().SolveSudokuProblem();
+
+            //new DiceThrow().diceThrow(4);
+            //new DiceThrow().diceThrow(5);
+
+            //new LetterCombinationsOfPhoneNumber().phonePad("12");
+            //new LetterCombinationsOfPhoneNumber().phonePad("123");
+
+            // new Permutation().printPermutationsOfString("abc");
+            // new Permutation().printPermutationsOfString("abcd");
+
+            // Console.WriteLine(new RotatedSortedArray().search(new int[] { 10, 12, 1, 2, 3, 4, 5, 6 }, 3));
+            // Console.WriteLine(new RotatedSortedArray().search(new int[] { 7,8,9,10, 12, 1, 2, 3, 4, 5, 6 }, 9));
+            // Console.WriteLine(new RotatedSortedArray().search(new int[] { 7, 8, 9, 10, 12, 1, 2, 3, 4, 5, 6 }, 5));
+
+            // Console.WriteLine(new MountainArray().SearchElement(new int[] { 1, 2, 3, 4, 3, 2, 1 },3));
+            // Console.WriteLine(new MountainArray().SearchElement(new int[] { 0, 1, 2, 0, 1 },1));
+            //// Console.WriteLine(new MountainArray().SearchElement(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 },4));
+
+            // Console.WriteLine(new MountainArray().findElement(new int[] { 1, 2, 3, 4, 3, 2, 1 }));
+            // Console.WriteLine(new MountainArray().findElement(new int[] { 0, 1, 2, 0, 1 }));
+            // Console.WriteLine(new MountainArray().findElement(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }));
+
+            // Console.WriteLine(new MountainArray().findIndex(new int[] { 1, 2, 3, 4, 3, 2, 1 }));
+            // Console.WriteLine(new MountainArray().findIndex(new int[] { 0,1,2,0,1}));
+            // Console.WriteLine(new MountainArray().findIndex(new int[] { 1,2,3,4,5,6,7,8 }));
+
+            //Console.WriteLine(new InfiniteArray().positionOfItem(new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }, 15));
+            //Console.WriteLine(new InfiniteArray().positionOfItem(new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }, 18));
+            //Console.WriteLine(new InfiniteArray().positionOfItem(new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }, 14));
+            //Console.WriteLine(new InfiniteArray().positionOfItem(new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 }, 9));
+
+            //new FirstLastItemPosition().findItemPosition(new int[] { 1, 2, 4, 4, 4, 4, 4, 4, 5, 6, 7 }, 4);
 
 
-            new SubSet().printSubset("abc");
+            //new NextGreatestLetter().nextGreatestLetter(new char[] { 'a','b','c'}, 't');
+            //new NextGreatestLetter().nextGreatestLetter(new char[] { 'a', 'b', 'c' }, 'b');
+            //new NextGreatestLetter().nextGreatestLetter(new char[] { 'a', 'b', 'c' }, 'z');
 
-            Console.WriteLine(new RemoveChars().skipAppNotApple("aabbcappdeasdg"));
+            // new Floor().floorOfNumber (new int[] { 2, 3, 5, 9, 14, 16, 18 }, 15);
+            // new Floor().floorOfNumber(new int[] { 2, 3, 5, 9, 14, 16, 18 }, 9);
+            // new Floor().floorOfNumber(new int[] { 2, 3, 5, 9, 14, 16, 18 }, 4);
 
-            Console.WriteLine(new RemoveChars().replaceChars("aabbcdeasdg"));
-           // microsoft();
+            // new Ceiling().ceilingOfNum(new int[] { 2, 3, 5, 9, 14, 16, 18 }, 15);
+            // new Ceiling().ceilingOfNum(new int[] { 2, 3, 5, 9, 14, 16, 18 }, 9);
+            // new Ceiling().ceilingOfNum(new int[] { 2, 3, 5, 9, 14, 16, 18 }, 4);
 
-            Console.WriteLine("{0}", ReverseWords("hi hello i am Sravanthi      "));
+            // new SubSet().printSubset("abc");
+
+            // Console.WriteLine(new RemoveChars().skipAppNotApple("aabbcappdeasdg"));
+
+            // Console.WriteLine(new RemoveChars().replaceChars("aabbcdeasdg"));
+            //// microsoft();
+
+            // Console.WriteLine("{0}", ReverseWords("hi hello i am Sravanthi      "));
             //Console.WriteLine("{0}", atoi("21474836460"));
 
-           // dpEducative();
+            // dpEducative();
 
             // WordBreak();
 
 
-            //decodeWays();
+            decodeWays();
 
             //twoSum();
             //threeSum();
@@ -565,7 +629,7 @@ namespace PracticeAlgos
             //Console.Write("PostOrder traversal : ");
             //new TreesAlgoExpert().postOrderTraversal(root);
 
-            //Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 3));
+            Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 3));
             //Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 9));
             //Console.WriteLine(new TreesAlgoExpert().findKthLargestElement(root, 19));
         }
